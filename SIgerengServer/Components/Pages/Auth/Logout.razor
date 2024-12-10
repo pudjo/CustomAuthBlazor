@@ -1,0 +1,19 @@
+﻿@page "/auth/logout"
+@using System.ComponentModel.DataAnnotations
+@using Microsoft.AspNetCore.Authentication
+@inject NavigationManager navigationManager;
+<h3>Log out</h3>
+<a>Logout...</a>
+@code {
+    private const string LoginForm = "login-form";
+    
+    [CascadingParameter]
+    public HttpContext httpContext { set; get; } = default;
+    protected  override async Task OnInitializedAsync()
+    {
+        await httpContext.SignOutAsync(Constant.AuthName);
+        navigationManager.NavigateTo("/", replace:true);
+
+    } 
+
+}

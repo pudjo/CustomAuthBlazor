@@ -1,0 +1,15 @@
+﻿@page "/wasm-client-profiile"
+@using Microsoft.AspNetCore.Authorization
+@using System.Security.Claims
+@rendermode InteractiveWebAssembly
+@attribute [Authorize]
+<h3>ClientProfile</h3>
+<AuthorizeView>
+    <Authorized>
+        <h1>Hallo @context.User.Claims.FirstOrDefault(x=>x.Type==ClaimTypes.Name)?.Value </h1>
+    </Authorized>
+
+</AuthorizeView>
+@code {
+
+}
